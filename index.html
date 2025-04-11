@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autism Support System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-image">
+              <img src="hero-image.jpg" alt="Child with autism smiling" />
+              <div class="hero-text">
+                <h1>Autism AI Support</h1>
+                <p class="tagline">Empowering Every Child, Every Voice, Step by Step</p>
+                <button class="cta-btn">Get Started</button>
+              </div>
+            </div>
+          </section>
+          
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2>Explore Our Tools</h2>
+            <div class="feature-buttons">
+                <button id="communicationBtn">Communication</button>
+                <button id="socialSkillsBtn">Social Skills</button>
+                <button id="routineBtn">Routine Manager</button>
+                <button id="settingsBtn">Settings</button>
+            </div>
+        </section>
+
+        <!-- Modules Section (Hidden by Default) -->
+        <section id="modules" class="modules">
+            <div id="communication" class="module" style="display: none;">
+                <h2>Communication Module</h2>
+                <div id="communicationGrid" class="grid"></div>
+                <div id="sentenceBuilder"></div>
+            </div>
+            <div id="socialSkills" class="module" style="display: none;">
+                <h2>Social Skills Training</h2>
+                <div id="scenario"></div>
+                <div class="options-label" id="options"></div>
+                <div id="feedback"></div>
+            </div>
+            <div id="routine" class="module" style="display: none;">
+                <h2>Routine Manager</h2>
+                <ul id="routineList"></ul>
+            </div>
+            <div id="settings" class="module" style="display: none;">
+                <h2>Settings</h2>
+                <label for="upload">Upload Image/Video:</label>
+                <input type="file" id="upload" accept="image/*,video/*">
+                <button id="saveSettings">Save Settings</button>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <h2>How We Help</h2>
+            <p>The Autism Support System is designed to empower children with Autism Spectrum Disorder (ASD) by providing tools to enhance communication, build social skills, and manage daily routines. Our intuitive interface uses visual aids and text-to-speech to support non-verbal children, interactive scenarios to boost confidence in social settings, and customizable schedules to reduce anxiety and foster independence.</p>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="#hero">Home</a>
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+            </div>
+            <div class="footer-contact">
+                <p>Contact: <a href="mailto:support@autismsystem.org">support@autismsystem.org</a></p>
+                <p>Help Line: 1-800-555-HELP</p>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

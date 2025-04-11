@@ -1,0 +1,284 @@
+body {
+    background: linear-gradient(to bottom, #0a192f, #1a365d);
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    position: relative;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 600px;
+    filter: brightness(0.6); /* Darkens image a bit for better text contrast */
+  }
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    transform: translateY(-50%);
+    color: white;
+    text-align: left;
+    max-width: 40%;
+    padding: 1rem;
+  }
+  
+.hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+.hero h1 {
+    font-size: 2.5em;
+    margin: 1rem;
+}
+
+.tagline {
+    font-size: 1.2em;
+    color: #b0c4de;
+    margin-bottom: 1.5rem;
+}
+
+.cta-btn {
+    background: linear-gradient(to right, #2a4a7a, #66ccff);
+    color: #ffffff;
+    border: none;
+    width: 15rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2em;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.cta-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to right, #3a6a9a, #99eeff);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-text {
+      text-align: left;
+      top: 30%;
+      font-size: 0.75rem;
+      transform: none;
+      margin-top: 1rem;
+    }
+    .hero-text h1{
+        font: 2em;
+    }
+  }
+
+/* Features Section */
+.features {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.features h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.feature-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.feature-buttons button {
+    background-color: #2a4a7a;
+    padding: 10px 20px;
+    color: #ffffff;
+    border: none;
+    width: auto;
+    padding: 0.75rem 1.5rem;
+    font-size: 1em;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+}
+
+.feature-buttons button:hover {
+    background-color: #3a6a9a;
+}
+
+/* Modules Section */
+.modules {
+    padding: 20px;
+}
+
+.module {
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.grid img, .grid video {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#sentenceBuilder {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #66ccff;
+}
+
+#routineList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#routineList li {
+    background-color: #2a4a7a;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#routineList li.completed {
+    text-decoration: line-through;
+    color: #757575;
+}
+
+input {
+    background-color: #0a192f;
+    color: #ffffff;
+    border: 1px solid #2a4a7a;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+    transform: scale(1.02);
+    transition: transform 0.2s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /*Skill Training Labels*/
+/* Style the container holding the option buttons */
+#options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+  
+  /* Modern button styling */
+  #options button {
+    background-color: #ffffff;
+    border: 1px solid #2a4a7a;
+    color: #0a192f;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-family: 'Poppins', sans-serif; /* or your chosen font */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effect for interactivity */
+  #options button:hover {
+    background-color: #2a4a7a;
+    color: #ffffff;
+    border-color: #2a4a7a;
+  }
+  
+  /* Focus outline for accessibility */
+  #options button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+  }
+  
+  
+  
+
+/* About Section */
+.about {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: rgba(10, 25, 47, 0.8);
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
+.about h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Footer Section */
+.footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #2a4a7a;
+}
+
+.footer-links a {
+    color: #66ccff;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #99eeff;
+}
+
+.footer-contact p {
+    margin: 5px 0;
+}
+
+.footer-contact a {
+    color: #66ccff;
+    text-decoration: none;
+}
+
+.footer-contact a:hover {
+    color: #99eeff;
+}
