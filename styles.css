@@ -82,13 +82,19 @@ body {
 @media (max-width: 768px) {
     .hero-text {
       text-align: left;
-      top: 30%;
+      top: 10%;
       font-size: 0.75rem;
       transform: none;
-      margin-top: 1rem;
+      margin-bottom: 0.25rem;
     }
     .hero-text h1{
-        font: 2em;
+        font-size: 1.8rem;
+        line-height: 110%;
+        margin: 0px;
+    }
+    .hero-text .cta-btn{
+        margin-top: 0px;
+        margin-bottom: 10px;
     }
   }
 
