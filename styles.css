@@ -80,12 +80,20 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px;
+    }
     .hero-text {
       text-align: left;
-      top: 10%;
+      position: absolute;
+      top: 20%;
+      max-width: 60%;
       font-size: 0.75rem;
       transform: none;
-      margin-bottom: 0.25rem;
+      left: 0.5rem;
+      margin-top: 0.5rem 0rem;
     }
     .hero-text h1{
         font-size: 1.8rem;
