@@ -24,21 +24,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const sentenceBuilder = document.getElementById('sentenceBuilder');
     let sentence = [];
 
+    // Load items from localStorage or use default items
     const items = JSON.parse(localStorage.getItem('communicationItems')) || [
         { src: 'image1.jpg', text: 'I want water' },
         { src: 'image2.jpg', text: 'I am happy' },
+        { src: 'help.jpg', text: 'I need help' },
+        { src: 'sad.jpg', text: 'I am sad' },
+        { src: 'hungry.jpg', text: 'I am hungry, I need food' },
+        { src: 'cold.jpg', text: 'I`m cold, I need a blanket' },
+        { src: 'more.jpg', text: 'can I get some more food?' },
+        { src: 'play.jpg', text: 'can I go outside?' },
+        { src: 'bed.jpg', text: 'time for bed' },
+        { src: 'bathroom.jpg', text: 'I need to go to the bathroom' },
+        { src: 'blanket.jpg', text: 'the weather is cold, I need to get warm' },
+        { src: 'outside.jpg', text: 'can I go out and play with my friends?' },
     ];
 
-    items.forEach(item => {
-        const element = item.src.endsWith('.mp4') ? document.createElement('video') : document.createElement('img');
-        element.src = item.src;
-        element.addEventListener('click', () => {
-            sentence.push(item.text);
-            sentenceBuilder.textContent = sentence.join(' ');
-            speak(item.text);
+    // Function to render the communication grid
+    function renderCommunicationGrid() {
+        communicationGrid.innerHTML = ''; // Clear the grid
+        items.forEach(item => {
+            const element = item.src.endsWith('.mp4') ? document.createElement('video') : document.createElement('img');
+            element.src = item.src;
+            element.addEventListener('click', () => {
+                sentence.push(item.text);
+                sentenceBuilder.textContent = sentence.join(' ');
+                speak(item.text);
+            });
+            communicationGrid.appendChild(element);
         });
-        communicationGrid.appendChild(element);
-    });
+    }
+
+    // Initial render of communication grid
+    renderCommunicationGrid();
 
     // Social Skills Training
     const scenarios = [
@@ -70,26 +88,26 @@ document.addEventListener('DOMContentLoaded', () => {
         { question: 'What do you say when you need more time to finish?', options: ['Can I have more time?', 'I`m done', 'This is too hard'], answer: 'Can I have more time?' },
         { question: 'What do you say if someone asks to sit next to you?', options: ['Sure, sit here', 'No, go away', 'I`m leaving'], answer: 'Sure, sit here' },
         { question: 'What do you say when you see a friend after a long time?', options: ['I missed you', 'Who are you?', 'Go home'], answer: 'I missed you' },
-        { question: 'What do you do if someone is too loud?', options: ['Ask them to be quieter', 'Yell back', 'Run away'], answer: 'Ask them to be quieter' },
-        { question: 'What do you say when you finish drawing a picture?', options: ['Look at my picture!', 'It`s bad', 'I`m not done'], answer: 'Look at my picture!' },
-        { question: 'What do you say if someone asks what you’re playing?', options: ['I`m playing a game', 'None of your business', 'Stop talking'], answer: 'I`m playing a game' },
+        { question: 'What do you do if someone is too loud?', options: ['Yell back','Ask them to be quieter', 'Run away'], answer: 'Ask them to be quieter' },
+        { question: 'What do you say when you finish drawing a picture?', options: ['It`s bad','Look at my picture!', 'I`m not done'], answer: 'Look at my picture!' },
+        { question: 'What do you say if someone asks what you’re playing?', options: ['None of your business', 'Stop talking','I`m playing a game'], answer: 'I`m playing a game' },
         { question: 'What do you say when you want to give someone a high-five?', options: ['High-five!', 'Don`t touch me', 'I`m busy'], answer: 'High-five!' },
-        { question: 'What do you do if someone forgets your name?', options: ['Tell them your name', 'Get mad', 'Walk away'], answer: 'Tell them your name' },
-        { question: 'What do you say when you’re ready to start a group activity?', options: ['Let`s start', 'I don`t want to', 'Wait for me'], answer: 'Let`s start' },
-        { question: 'What do you say if someone spills their drink?', options: ['It`s okay, I`ll help', 'Clean it yourself', 'That`s funny'], answer: 'It`s okay, I`ll help' },
+        { question: 'What do you do if someone forgets your name?', options: ['Get mad', 'Walk away', 'Tell them your name'], answer: 'Tell them your name' },
+        { question: 'What do you say when you’re ready to start a group activity?', options: ['I don`t want to', 'Let`s start', 'Wait for me'], answer: 'Let`s start' },
+        { question: 'What do you say if someone spills their drink?', options: ['Clean it yourself','It`s okay, I`ll help', 'That`s funny'], answer: 'It`s okay, I`ll help' },
         { question: 'What do you say when you want to trade toys?', options: ['Want to trade?', 'This is better', 'Give me yours'], answer: 'Want to trade?' },
-        { question: 'What do you say if someone says they’re tired?', options: ['Do you want to rest?', 'Keep going', 'I don`t care'], answer: 'Do you want to rest?' },
+        { question: 'What do you say if someone says they’re tired?', options: ['Keep going', 'I don`t care','Do you want to rest?'], answer: 'Do you want to rest?' },
         { question: 'What do you say when you’re leaving a playdate?', options: ['See you later', 'I`m not coming back', 'Stay here'], answer: 'See you later' },
-        { question: 'What do you do if someone is waiting to use the swing?', options: ['Let them have a turn', 'Keep swinging', 'Push them away'], answer: 'Let them have a turn' },
+        { question: 'What do you do if someone is waiting to use the swing?', options: ['Keep swinging', 'Push them away','Let them have a turn'], answer: 'Let them have a turn' },
         { question: 'What do you say when you want to show someone your book?', options: ['Look at this!', 'It`s mine', 'Go read your own'], answer: 'Look at this!' },
-        { question: 'What do you say if someone asks what time it is?', options: ['I`ll check', 'I don`t know', 'Ask someone else'], answer: 'I`ll check' },
+        { question: 'What do you say if someone asks what time it is?', options: ['I don`t know', 'I`ll check','Ask someone else'], answer: 'I`ll check' },
         { question: 'What do you say when you’re done with your snack?', options: ['I`m finished', 'I want more', 'Throw it away'], answer: 'I`m finished' },
         { question: 'What do you say if someone is scared of a loud noise?', options: ['It`s okay', 'Be quiet', 'That`s loud'], answer: 'It`s okay' },
-        { question: 'What do you say when you want to play outside?', options: ['Can we go outside?', 'Stay inside', 'I`m staying here'], answer: 'Can we go outside?' },
-        { question: 'What do you do if someone is carrying too many books?', options: ['Offer to carry some', 'Let them drop', 'Walk past'], answer: 'Offer to carry some' },
+        { question: 'What do you say when you want to play outside?', options: ['Stay inside', 'I`m staying here','Can we go outside?'], answer: 'Can we go outside?' },
+        { question: 'What do you do if someone is carrying too many books?', options: ['Let them drop','Offer to carry some','Walk past'], answer: 'Offer to carry some' },
         { question: 'What do you say when you’re happy about a new toy?', options: ['I like this!', 'It`s boring', 'Give it back'], answer: 'I like this!' },
-        { question: 'What do you say if someone asks to join your drawing?', options: ['Sure, let`s draw', 'No, it`s mine', 'I`m done'], answer: 'Sure, let`s draw' },
-        { question: 'What do you say when you need to wait your turn?', options: ['I`ll wait', 'Go faster', 'It`s my turn now'], answer: 'I`ll wait' },
+        { question: 'What do you say if someone asks to join your drawing?', options: ['No, it`s mine', 'I`m done','Sure, let`s draw'], answer: 'Sure, let`s draw' },
+        { question: 'What do you say when you need to wait your turn?', options: ['Go faster','I`ll wait',  'It`s my turn now'], answer: 'I`ll wait' },
         { question: 'What do you say if someone says they’re your friend?', options: ['You`re my friend too', 'I don`t like you', 'Go away'], answer: 'You`re my friend too' }
     ];
 
@@ -118,9 +136,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // Routine Manager
     const routineList = document.getElementById('routineList');
     const routines = JSON.parse(localStorage.getItem('routines')) || [
-        { task: 'Brush teeth', completed: false },
-        { task: 'Eat breakfast', completed: false },
-    ];
+        { task: "Wake up", completed: false },
+        { task: "Brush teeth", completed: false },
+        { task: "Wash face", completed: false },
+        { task: 'Say your prayers', completed: false },
+        { task: 'Take a bath', completed: false },
+        { task: "Get dressed", completed: false },
+        { task: "Eat breakfast", completed: false },
+        { task: "Pack school bag", completed: false },
+        { task: "Put on shoes", completed: false },
+        { task: "Go to school", completed: false },
+        { task: "Unpack school bag", completed: false },
+        { task: "Attend morning class", completed: false },
+        { task: "Eat snack", completed: false },
+        { task: "Play at recess", completed: false },
+        { task: "Attend afternoon class", completed: false },
+        { task: "Do sensory break", completed: false },
+        { task: "Eat lunch", completed: false },
+        { task: "Read a book", completed: false },
+        { task: "Do homework", completed: false },
+        { task: "Pack up for home", completed: false },
+        { task: "Go home", completed: false },
+        { task: "Take off shoes", completed: false },
+        { task: "Eat afternoon snack", completed: false },
+        { task: "Play quietly", completed: false },
+        { task: "Do sensory activity", completed: false },
+        { task: "Help set table", completed: false },
+        { task: "Eat dinner", completed: false },
+        { task: "Take a bath", completed: false },
+        { task: "Put on pajamas", completed: false },
+        { task: "Brush teeth again", completed: false },
+        { task: "Listen to bedtime story", completed: false },
+        { task: 'Say a prayer', completed: false },
+        { task: "Go to bed", completed: false },
+        ];
+
 
     routines.forEach(routine => {
         const li = document.createElement('li');
@@ -134,10 +184,55 @@ document.addEventListener('DOMContentLoaded', () => {
         routineList.appendChild(li);
     });
 
-    // Settings (Upload Functionality)
+    // Settings (Upload and Delete Functionality)
     const uploadInput = document.getElementById('upload');
     const saveSettingsBtn = document.getElementById('saveSettings');
+    const uploadedItemsList = document.getElementById('uploadedItemsList');
 
+    // Function to render the uploaded items list with delete buttons
+    function renderUploadedItems() {
+        uploadedItemsList.innerHTML = ''; // Clear the list
+        items.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.style.display = 'flex';
+            li.style.alignItems = 'center';
+            li.style.marginBottom = '10px';
+
+            // Display a small preview of the item (image or video)
+            const element = item.src.endsWith('.mp4') ? document.createElement('video') : document.createElement('img');
+            element.src = item.src;
+            element.style.width = '50px';
+            element.style.height = '50px';
+            element.style.marginRight = '10px';
+
+            // Add the item's text
+            const textSpan = document.createElement('span');
+            textSpan.textContent = item.text;
+            textSpan.style.marginRight = '10px';
+
+            // Add a delete button
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.classList.add('delete-btn');
+            deleteBtn.dataset.index = index; // Store the index for reference
+            deleteBtn.addEventListener('click', () => {
+                items.splice(index, 1); // Remove the item from the array
+                localStorage.setItem('communicationItems', JSON.stringify(items)); // Update localStorage
+                renderCommunicationGrid(); // Refresh the communication grid
+                renderUploadedItems(); // Refresh the uploaded items list
+            });
+
+            li.appendChild(element);
+            li.appendChild(textSpan);
+            li.appendChild(deleteBtn);
+            uploadedItemsList.appendChild(li);
+        });
+    }
+
+    // Initial render of uploaded items
+    // renderUploadedItems();
+
+    // Upload functionality
     saveSettingsBtn.addEventListener('click', () => {
         const file = uploadInput.files[0];
         if (file) {
@@ -146,19 +241,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const newItem = { src: e.target.result, text: 'New item' };
                 items.push(newItem);
                 localStorage.setItem('communicationItems', JSON.stringify(items));
-                const element = file.type.startsWith('video') ? document.createElement('video') : document.createElement('img');
-                element.src = newItem.src;
-                element.addEventListener('click', () => {
-                    sentence.push(newItem.text);
-                    sentenceBuilder.textContent = sentence.join(' ');
-                    speak(newItem.text);
-                });
-                communicationGrid.appendChild(element);
+                renderCommunicationGrid(); // Refresh the communication grid
+                renderUploadedItems(); // Refresh the uploaded items list
             };
             reader.readAsDataURL(file);
         }
     });
 
+    // Text-to-Speech Function
     function speak(text) {
         const utterance = new SpeechSynthesisUtterance(text);
         speechSynthesis.speak(utterance);

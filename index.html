@@ -29,7 +29,7 @@
                 <button id="communicationBtn">Communication</button>
                 <button id="socialSkillsBtn">Social Skills</button>
                 <button id="routineBtn">Routine Manager</button>
-                <button id="settingsBtn">Settings</button>
+                <button id="settingsBtn">Parent Portal</button>
             </div>
         </section>
 
@@ -51,10 +51,14 @@
                 <ul id="routineList"></ul>
             </div>
             <div id="settings" class="module" style="display: none;">
-                <h2>Settings</h2>
+                <h2>Parents/ Caregiver's Settings</h2>
                 <label for="upload">Upload Image/Video:</label>
                 <input type="file" id="upload" accept="image/*,video/*">
                 <button id="saveSettings">Save Settings</button>
+            
+                <!-- New section to display uploaded items with delete buttons -->
+                <h3>Uploaded Items</h3>
+                <ul id="uploadedItemsList" style="list-style: none; padding: 0;"></ul>
             </div>
         </section>
 
