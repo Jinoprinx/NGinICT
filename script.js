@@ -115,17 +115,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const optionsDiv = document.getElementById('options');
     const feedbackDiv = document.getElementById('feedback');
 
+    // Load audio files
+    const correctSound = new Audio('correct.mp3');
+    const wrongSound = new Audio('wrong.mp3');
+
     function loadScenario() {
+        // Clear previous feedback
+        feedbackDiv.innerHTML = ''
+
         const randomIndex = Math.floor(Math.random() * scenarios.length);
         const scenario = scenarios[randomIndex];
+
         scenarioDiv.textContent = scenario.question;
         optionsDiv.innerHTML = '';
+
         scenario.options.forEach(option => {
             const button = document.createElement('button');
             button.textContent = option;
             button.addEventListener('click', () => {
-                feedbackDiv.textContent = option === scenario.answer ? 'Great job!' : 'Let’s try again';
-                setTimeout(loadScenario, 1000);
+                //If answer is correct
+                if (option === scenario.answer) {
+                    // ✅ Play correct sound
+                    correctSound.currentTime = 0; // rewind
+                    correctSound.play();
+
+                    feedbackDiv.innerHTML = `
+                      <img src="thumbs-up.gif" alt="Correct" class="popup-gif" />
+                      <p>Great job!</p>
+                    `;
+                    // Load a new scenario after a delay
+                    setTimeout(loadScenario, 1000);
+                  } else {
+                    // If the answer is wrong:
+                    // ❌ Play wrong sound
+                    wrongSound.currentTime = 0; // rewind
+                    wrongSound.play();
+                    
+                    feedbackDiv.innerHTML = `
+                      <img src="try-again.gif" alt="Try Again" class="popup-gif" />
+                      <p>Let’s try again</p>
+                    `;
+                    // Remove the feedback after a short delay so the user can try again
+                    setTimeout(() => {
+                      feedbackDiv.innerHTML = '';
+                    }, 1000);
+                  }
             });
             optionsDiv.appendChild(button);
         });
